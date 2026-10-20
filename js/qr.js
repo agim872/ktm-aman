@@ -31,8 +31,23 @@ function downloadQR() {
     alert('Buat QR terlebih dahulu!');
     return;
   }
+
+  const skala = 3;
+  const tepi = 40;
+  const besar = canvas.width * skala + tepi * 2;
+
+  const hasil = document.createElement('canvas');
+  hasil.width = besar;
+  hasil.height = besar;
+
+  const ctx = hasil.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, besar, besar);
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(canvas, tepi, tepi, canvas.width * skala, canvas.height * skala);
+
   const link = document.createElement('a');
-  link.href = canvas.toDataURL('image/png');
+  link.href = hasil.toDataURL('image/png');
   link.download = 'ktm-qr.png';
   link.click();
 }
