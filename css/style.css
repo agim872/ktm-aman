@@ -35,3 +35,5 @@ button.tab-btn.active { background: #0066cc; }
 
 #qr-output { display: flex; justify-content: center; margin-top: 16px; }
 #hasil-identitas p { margin: 4px 0; }
+#reader-file { display: none; }
+#status-gambar { font-size: 14px; color: #555; }
