@@ -36,3 +36,41 @@ async function dekripsiScan() {
     alert('Gagal: password salah atau QR tidak valid.');
   }
 }
+async function scanGambar(input) {
+  const file = input.files[0];
+  const status = document.getElementById('status-gambar');
+
+  if (!file) {
+    return;
+  }
+
+  // Matikan kamera lebih dulu jika sedang menyala
+  try {
+    if (pemindai) {
+      await pemindai.stop();
+    }
+  } catch (e) {
+    // kamera memang tidak menyala, abaikan
+  }
+
+  status.innerText = 'Membaca gambar...';
+  const pembaca = new Html5Qrcode('reader-file');
+
+  try {
+    const teks = await pembaca.scanFile(file, false);
+    document.getElementById('hasil-scan').value = teks;
+    status.innerText = 'QR terbaca. Sekarang isi password lalu klik Buka Data.';
+  } catch (e) {
+    status.innerText = '';
+    alert('QR tidak terbaca. Pastikan gambar adalah QR hasil Download PNG, utuh dan tidak terpotong.');
+  }
+
+  try {
+    pembaca.clear();
+  } catch (e) {
+    // abaikan
+  }
+
+  // Kosongkan kolom agar file yang sama bisa dipilih lagi
+  input.value = '';
+}
