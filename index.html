@@ -34,11 +34,19 @@
     <h2>Scan dan Buka QR</h2>
     <div id='reader'></div>
     <button onclick='mulaiScan()'>Mulai Kamera</button>
+
+    <!-- BARU: scan dari file gambar -->
+    <p>Atau pilih gambar QR (PNG) yang sudah diunduh:</p>
+    <input id='input-gambar-qr' type='file' accept='image/*' onchange='scanGambar(this)'>
+    <div id='reader-file'></div>
+    <p id='status-gambar'></p>
+    <!-- akhir bagian baru -->
+
     <input id='hasil-scan' placeholder='Isi QR muncul di sini (atau tempel manual)'>
     <input id='password-scan' type='password' placeholder='Password'>
     <button onclick='dekripsiScan()'>Buka Data</button>
     <div id='hasil-identitas'></div>
-  </section>
+    </section>
 
   <!-- TAB 3: ENKRIPSI TEKS -->
   <section id='tab-teks' class='tab'>
