@@ -1,0 +1,37 @@
+body {
+  font-family: sans-serif;
+  max-width: 520px;
+  margin: 20px auto;
+  padding: 0 12px;
+}
+h1 { text-align: center; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+
+input, textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+button {
+  padding: 10px 16px;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 4px 0;
+}
+button.tab-btn { background: #888; }
+button.tab-btn.active { background: #0066cc; }
+
+.tab { display: none; }
+.tab.active { display: block; }
+
+#qr-output { display: flex; justify-content: center; margin-top: 16px; }
+#hasil-identitas p { margin: 4px 0; }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='id'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>KTM Digital Aman</title>
+  <link rel='stylesheet' href='css/style.css'>
+</head>
+<body>
+  <h1>KTM Digital Aman</h1>
+
+  <nav>
+    <button class='tab-btn active' data-tab='tab-qr'>Buat QR</button>
+    <button class='tab-btn' data-tab='tab-scan'>Scan QR</button>
+    <button class='tab-btn' data-tab='tab-teks'>Enkripsi Teks</button>
+    <button class='tab-btn' data-tab='tab-pdf'>Enkripsi PDF</button>
+  </nav>
+
+  <!-- TAB 1: BUAT QR -->
+  <section id='tab-qr' class='tab active'>
+    <h2>Buat QR Identitas</h2>
+    <input id='nim' placeholder='NIM'>
+    <input id='nama' placeholder='Nama lengkap'>
+    <input id='jurusan' placeholder='Jurusan'>
+    <input id='tgl' type='date'>
+    <input id='password-qr' type='password' placeholder='Password'>
+    <button onclick='buatQR()'>Buat QR</button>
+    <button onclick='downloadQR()'>Download PNG</button>
+    <div id='qr-output'></div>
+  </section>
+
+  <!-- TAB 2: SCAN QR -->
+  <section id='tab-scan' class='tab'>
+    <h2>Scan dan Buka QR</h2>
+    <div id='reader'></div>
+    <button onclick='mulaiScan()'>Mulai Kamera</button>
+    <input id='hasil-scan' placeholder='Isi QR muncul di sini (atau tempel manual)'>
+    <input id='password-scan' type='password' placeholder='Password'>
+    <button onclick='dekripsiScan()'>Buka Data</button>
+    <div id='hasil-identitas'></div>
+  </section>
+
+  <!-- TAB 3: ENKRIPSI TEKS -->
+  <section id='tab-teks' class='tab'>
+    <h2>Enkripsi dan Dekripsi Teks</h2>
+    <textarea id='teks-asli' rows='4' placeholder='Teks asli'></textarea>
+    <input id='password-teks' type='password' placeholder='Password'>
+    <button onclick='enkripsiTeks()'>Enkripsi</button>
+    <button onclick='dekripsiTeks()'>Dekripsi</button>
+    <textarea id='teks-hasil' rows='4' placeholder='Hasil enkripsi / tempel cipher text di sini'></textarea>
+  </section>
+
+  <!-- TAB 4: ENKRIPSI PDF -->
+  <section id='tab-pdf' class='tab'>
+    <h2>Enkripsi dan Dekripsi PDF</h2>
+    <p>Pilih file PDF (untuk dienkripsi) atau file .enc (untuk didekripsi):</p>
+    <input id='inputPDF' type='file' accept='.pdf'>
+    <input id='inputENC' type='file' accept='.enc'>
+    <input id='password-pdf' type='password' placeholder='Password'>
+    <button onclick='enkripsiPDF()'>Enkripsi PDF</button>
+    <button onclick='dekripsiPDF()'>Dekripsi ke PDF</button>
+    <p id='status-pdf'></p>
+  </section>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.8/html5-qrcode.min.js'></script>
+  <script src='js/crypto.js'></script>
+  <script src='js/app.js'></script>
+  <script src='js/qr.js'></script>
+  <script src='js/scan.js'></script>
+  <script src='js/teks.js'></script>
+  <script src='js/pdf.js'></script>
+</body>
+</html>
