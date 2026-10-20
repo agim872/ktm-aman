@@ -6,15 +6,12 @@ async function buatQR() {
     tgl: document.getElementById('tgl').value
   });
   const password = document.getElementById('password-qr').value;
-
   if (!password) {
     alert('Isi password terlebih dahulu!');
     return;
   }
-
   const terenkripsi = await encryptBytes(encoder.encode(data), password);
   const teks = toBase64(terenkripsi);
-
   const area = document.getElementById('qr-output');
   area.innerHTML = '';
   new QRCode(area, {
